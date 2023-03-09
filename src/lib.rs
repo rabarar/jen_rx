@@ -80,6 +80,7 @@ impl State {
     /// state.
     pub fn update_by_osc_packet(&mut self, packet: osc::Packet) {
         for msg in packet.into_msgs() {
+            println!("msg -> {:?}", msg);
             self.update_by_events(osc_msg_to_events(msg));
         }
     }
