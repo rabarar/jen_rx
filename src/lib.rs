@@ -227,5 +227,6 @@ pub fn osc_msg_to_events(msg: osc::Message) -> Vec<Event> {
 
         arg = iter.next();
     }
+    println!("events: => {:?}", events);
     events
 }
