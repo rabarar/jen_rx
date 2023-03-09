@@ -156,15 +156,23 @@ impl Measure {
 pub fn osc_msg_to_events(msg: osc::Message) -> Vec<Event> {
     let mut events = vec![];
 
+    println!("enter osc_msg_to_events..");
     // OSC address must be jen.
     if msg.addr != "/jen" {
+        println!("no /jen exiting...");
         return events;
     }
 
     // A message without args indicates no events.
     let args = match msg.args {
-        Some(args) => args,
-        None => return events,
+        Some(args) => {
+            println!("args for event => {:?}", args);
+            args
+        },
+        None => {
+            println!("no args for event");
+            return events
+        },
     };
 
     // Test if an `Int` message is a mode.
